@@ -1,0 +1,38 @@
+/* ButtonWithAnimation.css */
+
+/* Button Styles */
+.custom-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button Hover Animation */
+  .custom-button:hover {
+    background-color: #2980b9;
+  }
+  .container {
+    position: relative;
+   }
+   
+   .bottom-div {
+    background-color: lightblue;
+    padding: 20px;
+    margin-bottom: 20px;
+    z-index: 1;
+   }
+   
+   .top-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: lightgreen;
+    padding: 20px;
+    z-index: 2;
+   }
