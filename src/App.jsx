@@ -1,24 +1,24 @@
 // import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
-import Middle from './components/Middle';
-
-import Middle1 from './components/Middle1';
-import Footer from './components/Footer';
 import{ BrowserRouter as Router,Routes,Route } from "react-router-dom";
-import Featuredproducts from './components/Featuredproducts';
+import SingleProduct from './components/SingleProduct';
+import Home from './components/Home';
+import Men from './components/Men';
 
 
 function App() {
   return (
   <>
   <Router>
-   <Navbar/>
-   <Middle1/>
-   <Middle/>
-   <Featuredproducts/>
-  
-   <Footer />
+    <Navbar/>
+   <Routes>
+    <Route path="/"element={<Home/>}></Route>
+    <Route path="/men"element={<Men/>}></Route>
+    <Route path="/singleproduct/:id" element={<SingleProduct/>}></Route>
+    {/* <Route path="*" element={<Error/>}></Route> */}
+    
+   </Routes>
    </Router>
   
   </>
