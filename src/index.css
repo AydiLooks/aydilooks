@@ -3,4 +3,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+body{
+    background-color: whitesmoke;
+}
+
 

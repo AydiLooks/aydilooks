@@ -1,17 +1,42 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import { useTheme } from '../context/Themecontext';
+import { NavLink } from 'react-router-dom';
+
 
 
 
 export default function Navbar() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const { theme, updateTheme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
  };
 
+ const handleScroll = () => {
+   const position = window.pageYOffset;
+   setScrollPosition(position);
+ };
+
+ useEffect(() => {
+   window.addEventListener('scroll', handleScroll);
+   return () => {
+     window.removeEventListener('scroll', handleScroll);
+   };
+ }, []);
+//  const handleThemeChange = () => {
+//   updateTheme({
+//     primaryColor: '#f39c12',
+//     secondaryColor: '#e74c3c',
+//     // Add other theme properties you want to update
+//   });
+// };
+
+
   return (
     <div>
-      <nav className="bg-black">
+      <nav className="fixed top-0 w-full z-10 mb-4" style={{backgroundColor:theme.bgcolor,fontFamily:theme.font,fontSize:theme.size}}>
   <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div className="relative flex h-16 items-center justify-between">
       <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -45,11 +70,11 @@ export default function Navbar() {
           <div className="flex space-x-4">
             {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
             {/* <a href="#" classname="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a> */}
-            <a href="http://localhost:3000/#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-            <a href="" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Men</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Women</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Beauty</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Stationary</a>
+            <NavLink to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</NavLink>
+            <NavLink to="/men" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Men</NavLink>
+            <NavLink to="/women" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Women</NavLink>
+            <NavLink to="/beauty" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Beauty</NavLink>
+            <NavLink to="/stationary" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Stationary</NavLink>
             
           </div>
         </div>

@@ -6,12 +6,12 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white font-normal w-full h-full pt-14 pr-4 pl-4 mt-14">
+    <footer className="bg-black text-white font-normal w-full h-full pt-24 pr-4 pl-4 mt-14">
       <div className="grid grid-cols-3 gap-4">
         <div className="float-left">
           <h2>About Us</h2>
           <p>
-            Your e-commerce store's mission statement or <br></br>a brief description can go here.
+          Elevate your style, simplify your shopping -<br></br> AydiLooks is where trends meet convenience.
           </p>
           {/* Add more content or links if needed */}
         </div>
@@ -30,10 +30,10 @@ const Footer = () => {
         <div className="justify-end">
           
           <ul className='grid grid-cols-4 gap-4'>
-            <li><NavLink to="/"className="hover:text-blue-500">Home</NavLink></li>
-            <li><NavLink to="/products"className="hover:text-blue-500">Products </NavLink></li>
-            <li><NavLink to="/about"className="hover:text-blue-500">About</NavLink></li>
-            <li><NavLink to="/contact"className="hover:text-blue-500">Contact</NavLink></li>
+            <li><NavLink to="/"className="hover:text-blue-500">Help</NavLink></li>
+            <li><NavLink to="/products"className="hover:text-blue-500">Follow Us </NavLink></li>
+            <li><NavLink to="/about"className="hover:text-blue-500">Company</NavLink></li>
+            <li><NavLink to="/contact"className="hover:text-blue-500">Policies</NavLink></li>
             {/* Add more links as needed */}
           </ul>
         </div>
@@ -45,7 +45,9 @@ const Footer = () => {
         <p>&copy; {new Date().getFullYear()}&nbsp;AYDILOOKS</p>
         {/* You can include additional information like copyright */}
       </div>
+      <br></br>
     </footer>
+  
   );
 };
 
