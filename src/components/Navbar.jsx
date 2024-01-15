@@ -8,16 +8,21 @@ import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
+ 
   const { theme, updateTheme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
+  const[show,setshow]=useState(false);
+  console.log(show);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
  };
 
  const handleScroll = () => {
    const position = window.pageYOffset;
+  
    setScrollPosition(position);
  };
+ 
 
  useEffect(() => {
    window.addEventListener('scroll', handleScroll);
@@ -35,13 +40,18 @@ export default function Navbar() {
 
 
   return (
-    <div>
-      <nav className="fixed top-0 w-full z-10 mb-4" style={{backgroundColor:theme.bgcolor,fontFamily:theme.font,fontSize:theme.size}}>
-  <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div className="relative flex h-16 items-center justify-between">
-      <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        {/* <!-- Mobile menu button--> */}
-        <button type="button" className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+    <div className=''>
+      <nav className="fixed top-0 w-full z-10 mb-4" style={{fontFamily:theme.font,fontSize:theme.size ,color:theme.color}}>
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="relative flex h-16 items-center justify-between">
+            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <button
+                type="button"
+                className="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                onClick={() => setshow(!show)}
+              >
           <span className="absolute -inset-0.5"></span>
           <span className="sr-only">Open main menu</span>
           {/* <!--
@@ -66,20 +76,23 @@ export default function Navbar() {
         <div className="flex flex-shrink-0 items-center">
           <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Aydilooks"></img>
         </div>
-        <div className="hidden sm:ml-6 sm:block">
-          <div className="flex space-x-4">
+
+
+              <div className="hidden sm:ml-6 sm:block">
+                <div className="flex space-x-4">
             {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
             {/* <a href="#" classname="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a> */}
-            <NavLink to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</NavLink>
-            <NavLink to="/men" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Men</NavLink>
-            <NavLink to="/women" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Women</NavLink>
-            <NavLink to="/beauty" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Beauty</NavLink>
-            <NavLink to="/stationary" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Stationary</NavLink>
+            <NavLink to="/" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2  " aria-current="page">Home</NavLink>
+            <NavLink to="/men" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 ">Men</NavLink>
+            <NavLink to="/women" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2">Women</NavLink>
+            <NavLink to="/beauty" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 ">Beauty</NavLink>
+            <NavLink to="/stationary" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 ">Stationary</NavLink>
             
           </div>
         </div>
       </div>
-       <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
         {/* <button type="button" className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span className="absolute -inset-1.5"></span>
           <span className="sr-only">View notifications</span>
@@ -124,8 +137,10 @@ export default function Navbar() {
   </div>
 
   {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-  <div className="sm:hidden" id="mobile-menu">
-    <div className="space-y-1 px-2 pb-3 pt-2">
+  { show?
+    <div className="sm:hidden" id="mobile-menu">
+            <div className="space-y-1 px-2 pb-3 pt-2">
+
       {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
       <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
       <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
@@ -133,6 +148,7 @@ export default function Navbar() {
       <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
     </div>
   </div>
+  :""}
 </nav>
  
     </div>

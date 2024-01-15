@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from '../context/Themecontext';
 import'./Component.css';
+import img from '../assets/80d45e10fbb13155d68ad9c8a823d79c-removebg-preview.png'
 
 
 
@@ -9,7 +10,8 @@ export default function Middle() {
     const { theme, updateTheme } = useTheme();
     return (
         <>
-            <div className="bg-slate-100 w-10/12 h-96 my-12 ml-40 mr-16 rounded ">
+            <div className="bg-slate-100 w-10/12 h-96 my-12 ml-40 mr-16 rounded mt-44 grid grid-cols-2 gap-2">
+                <div>
                 <p className="font-bold text-5xl float-left my-12 ml-20 text-slate-800 pt-16 mb-16">Lowest Prices
                     <br></br>
                     Best Quality Shopping<br></br><br></br>
@@ -19,15 +21,22 @@ export default function Middle() {
                         <p className='text-xl font-normal divide-x'><img src="https://cdn-icons-png.flaticon.com/128/9561/9561956.png" className="float-left w-6"></img>Easy return</p>
                     </div>
                 </p>
-                <img src="https://images.meesho.com/images/marketing/1678691617864_512.webp" className="w-300 h-300 float-right mr-20 pt-4 " alt="no image"></img>
+                </div> 
+                <span>
+                <img src="" className="" alt="no image"/> </span>
 
-            </div><br></br><br></br>
-            <div className="flex items-center justify-center mb-12">
+            </div> 
+            
+            
+            
+            
+            
+            <br></br><br></br>
+            {/* <div className="flex items-center justify-center mb-12">
                 <hr className='w-1/4 border-1 border-solid border-black ml-16'></hr>
                 <p className="mx-4 font-semibold text-3xl "style={{fontFamily:theme.font,}}>Top Categories To choose From</p>
                 <hr className='w-1/4 border-1 border-solid border-black'></hr>
-            </div>
-
+            </div> */}
             <br></br><br></br>
             <div className='grid grid-cols-2 gap-2 mb-28'>
             <div className='flex flex-row w-full h-full  my-4 ml-40 mr-16 mb-16 space-x-12 justify-content-center rounded '>

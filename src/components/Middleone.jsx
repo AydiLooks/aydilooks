@@ -1,51 +1,29 @@
+import React from 'react'
+import myimage from '../assets/39ebac85e4e5bdb06af7eafe1066a524-removebg-preview.png'
 
-import React from 'react';
-import "./Component.css";
-
-export default function Middleone() {
-
-    return (
-
-        <>
-
-            <section className='banner-area pt-44'>
-                {/* <div style={{ position: 'relative', width: '100%', height: '100vh'}}>
-                    <div className="w-60 h-1/2 float-right mr-4 bg-slate-200" style={{ position: 'absolute', top: '10px', right: '20px', zIndex: '1' }}></div>
-                    <div className='w-60 h-1/2 float-right mr-4 ' style={{ position: 'absolute', top: '40px', right: '50px', zIndex: '2' }}>
-                        <img src="https://i.pinimg.com/564x/85/83/a3/8583a3f411514d898fd08120fd3f31b5.jpg"></img>
-                    </div>
-
-                </div> */}
-                <div className='grid grid-cols-2 gap-2'>
-                <p className='text-white'>hey</p>
-                    <div className='grid grid-cols-4 gap-4'>
-                        <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-                            <div className="w-60 h-1/2 float-right mr-4 bg-slate-200" style={{ position: 'absolute', top: '10px', right: '20px', zIndex: '1' }}>
-
-                            </div>
-                            <div className='w-60 h-1/2 float-right mr-4 ' style={{ position: 'absolute', top: '40px', right: '50px', zIndex: '2' }}>
-                                <img src="https://i.pinimg.com/564x/85/83/a3/8583a3f411514d898fd08120fd3f31b5.jpg"></img>
-                            </div>
-                        </div>
-                    
-                    </div>
-                    
-                    </div>
+export default function Middleone () {
+  return (
+    <div className='banner-area grid grid-cols-2'>
+        <div class="ball" style={{top: "50vh", left: "50vw"}}></div>
+          <div class="ball" style={{top: "50vh", left: "50vw"}}></div>
+          <div class="ball" style={{top: "30vh", left: "70vw"}}></div>
+          <div class="ball" style={{top: "70vh", left: "20vw"}}></div>
 
 
 
+        <div className='text mt-56'style={{paddingLeft:"10%"}}>
+          <h1 className='font-bold text-5xl'>Elegance is not standing out, but being remembered.</h1><br></br>
+          <p>Get into the world of fashion and style.</p>
+          <h1 className='font-bold'>Elevate Your style,simplify your shopping.</h1>
+          <p>Fashion at your doorstep at just one click.</p>
+          
+        </div>
+        <div className='img pt-32'style={{float:"right"}}>
+            <img src={myimage}></img>
+            
+        </div>
+        
+    </div>
 
-            </section>
-
-
-
-
-        </>
-
-
-
-    )
-
+  )
 }
-
-

@@ -2,10 +2,10 @@ import React, { createContext, useState, useContext } from 'react';
 
 //a default theme
 const defaultTheme = {
-  bgcolor: 'black',
+  bgcolor: 'whitesmoke',
   font:'font-mono',
   size:'text-2xl',
-  color:'white'
+  color:'black'
   
 
 };
