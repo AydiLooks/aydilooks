@@ -3,12 +3,12 @@ import './Component.css';
 import { useFilterContext } from '../context/filtercontext';
 
 export default function Sort() {
-  const{grid_view,setGridView,setListView}=useFilterContext();
+  const{grid_view,setGridView,setListView,filter_products,sorting}=useFilterContext();
   const handleCheckboxChange = (event) => {
     if (event.target.checked) {
-      setGridView();
+      setListView();
     } else {
-        setListView();
+      setGridView();
     }
   };
 
@@ -26,8 +26,23 @@ export default function Sort() {
         <div id="bar3" class="bars"></div>
     </label>
           </div>
-          <div className='amoutn'>amount</div>
-          <div className='filter'>filter</div>
+          <div className='product-data'>
+            <p>{`${filter_products.length} Products Available`}</p>
+          </div>
+          <div className='filter'>
+            <form action='#'>
+              <label htmlFor='sort'></label>
+              <select name="sort" id='sort' className='border-2' onClick={sorting} >
+              <option value='lowest'>Price(lowest)</option>
+              <option value='#'disabled></option>
+              <option value='highest'>Price(highest)</option>
+              <option value='#'disabled></option>
+              <option value='a-z'>Price(a-z)</option>
+              <option value='#'disabled></option>
+              <option value='z-a'>Price(z-a)</option>
+              </select>
+            </form>
+          </div>
       </div>
     </div>
   )
