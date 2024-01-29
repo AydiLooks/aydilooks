@@ -4,10 +4,10 @@ import myimage from '../assets/39ebac85e4e5bdb06af7eafe1066a524-removebg-preview
 export default function Middleone () {
   return (
     <div className='banner-area grid grid-cols-2'>
-        <div class="ball" style={{top: "50vh", left: "50vw"}}></div>
-          <div class="ball" style={{top: "50vh", left: "50vw"}}></div>
+        <div class="ball" style={{top: "20vh", left: "95vw"}}></div>
+          <div class="ball" style={{top: "50vh", left: "40vw"}}></div>
           <div class="ball" style={{top: "30vh", left: "70vw"}}></div>
-          <div class="ball" style={{top: "70vh", left: "20vw"}}></div>
+          <div class="ball" style={{top: "70vh", left: "10vw"}}></div>
 
 
 
