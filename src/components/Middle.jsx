@@ -10,21 +10,33 @@ export default function Middle() {
     const { theme, updateTheme } = useTheme();
     return (
         <>
-            <div className="bg-slate-100 w-10/12 h-96 my-12 ml-40 mr-16 rounded mt-44 grid grid-cols-2 gap-2">
+            {/* <div className="bg-slate-100 w-10/12 h-96 my-12 ml-40 mr-16 rounded mt-44 grid grid-cols-2 gap-2">
                 <div>
-                <p className="font-bold text-5xl float-left my-12 ml-20 text-slate-800 pt-16 mb-16">Lowest Prices
+                <p className="font-bold text-5xl float-left my-12 ml-20 text-slate-800 pt-16 mb-16">Lowest Prices */}
+                <div className="bg-slate-100 w-full md:w-10/12 h-auto md:h-96 my-12 mx-auto md:ml-40 md:mr-16 rounded md:mt-44 grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div className="md:ml-20">
+          <p className="font-bold text-2xl md:text-5xl float-left my-4 md:my-12 ml-4 md:ml-20 text-slate-800 pt-8 md:pt-16 mb-8 md:mb-16">Lowest Prices
                     <br></br>
                     Best Quality Shopping<br></br><br></br>
-                    <div className='grid grid-cols-3 divide-x divide-black divide-double w-8/6 h-8 rounded'>
+                    {/* <div className='grid grid-cols-3 divide-x divide-black divide-double w-8/6 h-8 rounded'>
                         <p className='text-xl font-normal divide-x'><img src="https://cdn-icons-png.flaticon.com/128/2203/2203124.png" className="float-left w-8"></img>Fast Delivery</p>
                         <p className='text-xl font-normal divide-x'> <img src="https://cdn-icons-png.flaticon.com/128/6491/6491511.png" className="float-left w-8"></img>Cash on delivery</p>
                         <p className='text-xl font-normal divide-x'><img src="https://cdn-icons-png.flaticon.com/128/9561/9561956.png" className="float-left w-6"></img>Easy return</p>
-                    </div>
+                    </div> */}
+                     <div className='grid grid-cols-3 divide-x divide-black divide-double w-full md:w-8/6 h-auto md:h-8 rounded'>
+              <p className='text-md md:text-xl font-normal divide-x'><img src="https://cdn-icons-png.flaticon.com/128/2203/2203124.png" className="float-left w-8" alt="icon"></img>Fast Delivery</p>
+              <p className='text-md md:text-xl font-normal divide-x'> <img src="https://cdn-icons-png.flaticon.com/128/6491/6491511.png" className="float-left w-8" alt="icon"></img>Cash on delivery</p>
+              <p className='text-md md:text-xl font-normal divide-x'><img src="https://cdn-icons-png.flaticon.com/128/9561/9561956.png" className="float-left w-6" alt="icon"></img>Easy return</p>
+            </div>
                 </p>
                 </div> 
-                <span>
-                <img src="" className="" alt="no image"/> </span>
-
+                <span className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+          <img src="https://i.pinimg.com/564x/c5/f3/10/c5f3102bcb2324a8662af9183914b699.jpg" className="w-full h-auto md:h-3/4" alt="no image" />
+                {/* <span className='grid grid-cols-2 gap-2'>
+                
+                <img src="https://i.pinimg.com/564x/c5/f3/10/c5f3102bcb2324a8662af9183914b699.jpg" className=" h-3/4" alt="no image"/>  */}
+                {/* <img src="https://i.pinimg.com/564x/2c/09/a3/2c09a3585eb27f1a44d0b519212b20d4.jpg" className="" alt="no image"/> */}
+                </span>
             </div> 
             
             

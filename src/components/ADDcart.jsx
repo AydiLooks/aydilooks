@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
+import CardAmountToggle from './CardAmountToggle';
 
 export default function ADDcart({product}) {
     const{id,colors,stock}=product;
     const[color,setColor]=useState(colors[0]);
+    const[amount,setAmount]=useState();
+    const setDecrease=()=>{
+         amount>1?setAmount(amount-1):setAmount(1);
+    };
+    const setIncrease=()=>{
+        amount<stock?setAmount(amount+1):setAmount(stock);
+    };
   return (
 
     <div>
-        <div className='colors'></div>
+        <div className='colors'>
         <p>
             Colors:{
                 colors.map((curColor,index)=>{
@@ -19,6 +27,9 @@ export default function ADDcart({product}) {
                 })
             }
         </p>
+        </div>
+        {/* add to cart */}
+        <CardAmountToggle amount={amount} setDecrease={setDecrease} setIncrease={setIncrease}></CardAmountToggle>
     </div>
   )
 }
