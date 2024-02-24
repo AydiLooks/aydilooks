@@ -6,6 +6,7 @@ import SingleProduct from './components/SingleProduct';
 import Home from './components/Home';
 import Men from './components/Men';
 import Women from './components/Women';
+import Cart from './components/Cart';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <Route path="/men"element={<Men/>}></Route>
     <Route path="/women"element={<Women/>}></Route>
     <Route path="/singleproduct/:id" element={<SingleProduct/>}></Route>
+    <Route path="/cart" element={<Cart/>}></Route>
     {/* <Route path="*" element={<Error/>}></Route> */}
     
    </Routes>
