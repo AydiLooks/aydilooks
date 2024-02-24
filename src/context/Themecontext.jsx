@@ -6,8 +6,8 @@ const defaultTheme = {
   font:'font-mono',
   size:'text-2xl',
   color:'black'
+ 
   
-
 };
 
 export const ThemeContext = createContext();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from '../context/Themecontext';
 import'./Component.css';
-import img from '../assets/80d45e10fbb13155d68ad9c8a823d79c-removebg-preview.png'
+// import img from '../assets/80d45e10fbb13155d68ad9c8a823d79c-removebg-preview.png'
 
 
 
