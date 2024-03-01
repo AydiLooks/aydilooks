@@ -27,7 +27,7 @@ export default function CardAmountToggle({ amount, setDecrease, setIncrease }) {
 
           </svg>
         </button>
-        <p className='text-xl'>{amount}</p>
+        <p className='text-xl mt-2'>{amount}</p>
         {/* <button >+</button> */}
         <button onClick={setIncrease}
           title="Add New"
@@ -48,6 +48,7 @@ export default function CardAmountToggle({ amount, setDecrease, setIncrease }) {
             <path d="M12 16V8" stroke-width="1.5"></path>
           </svg>
         </button>
+        <br></br>
 
       </div>
       

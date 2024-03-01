@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from '../context/Themecontext';
 import'./Component.css';
+import { NavLink } from 'react-router-dom';
 // import img from '../assets/80d45e10fbb13155d68ad9c8a823d79c-removebg-preview.png'
 
 
@@ -65,14 +66,15 @@ export default function Middle() {
             </div>
             <p className='float:right m-44 mx-96'>
             <h1 className='text-bold text-6xl'>WOMEN COLLECTION</h1>
-                <br></br><br></br>
-            <button class="button-86" role="button">Explore</button></p>
+                <br></br><br></br><NavLink to="/women">
+            <button class="button-86" role="button">Explore</button></NavLink></p>
             </div>
             <div className='grid grid-cols-2 gap-2 mb-28'>
             <p className='float:right mx-16 m-44 '>
             <h1 className='text-bold text-6xl'>MEN COLLECTION</h1>
                 <br></br><br></br>
-              <button class="button-86" role="button">Explore</button>
+                <NavLink to="/men">
+              <button class="button-86" role="button" >Explore</button></NavLink>
 
             </p>
             <div className='flex flex-row  w-full h-full  my-4 ml- mr- mb-16 space-x-12 rounded'>
@@ -101,7 +103,9 @@ export default function Middle() {
             <p className='float:right m-40 mx-96'>
                 <h1 className='text-bold text-6xl'>BEAUTY</h1>
                 <br></br><br></br>
-            <button class="button-86" role="button">Explore</button></p>
+            <NavLink to="/beauty">   
+            <button class="button-86" role="button">Explore</button></NavLink> </p>
+        
             </div>
 
 

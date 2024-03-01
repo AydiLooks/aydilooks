@@ -7,6 +7,9 @@ import Home from './components/Home';
 import Men from './components/Men';
 import Women from './components/Women';
 import Cart from './components/Cart';
+ import Customers from './components/Customers';
+import Signup from './components/signup';
+import PrivateRoute from './components/Priveteroute';
 
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
     <Route path="/women"element={<Women/>}></Route>
     <Route path="/singleproduct/:id" element={<SingleProduct/>}></Route>
     <Route path="/cart" element={<Cart/>}></Route>
+    <Route path="/login" element={<Signup/>}></Route>
+    {/* <PrivateRoute path="/profile" element={Customers} /> */}
+    {/* <Route path="/customer" element={<Customers/>}></Route> */}
     {/* <Route path="*" element={<Error/>}></Route> */}
     
    </Routes>
