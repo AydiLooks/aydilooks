@@ -6,7 +6,7 @@ export default function Star({star,review}) {
   const { theme, updateTheme } = useTheme();
   const ratingstar=Array.from({length:5},(elem,index)=>{
     let number=index+0.5;
-    debugger;
+    // debugger;
     return(
       <span key={index}>
       {star>=index+1?(<i className='fa-solid fa-star'style={{color:"yellow"}}></i>):star>=number?(<i className="fa-solid fa-star-half"style={{color:"yellow"}}></i>):(<i className="fa-light fa-star-sharp"style={{color:"yellow"}}></i>)}

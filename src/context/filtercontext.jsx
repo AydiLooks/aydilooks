@@ -30,6 +30,8 @@ export const FilterContextProvider=({children})=>{
       let userValue=event.target.value;
          dispatch({type:"GET_SORT_VALUE",payload:userValue});
    }
+   // function for modifying the product a/c to category
+
 // update the filter values
 const updateFilterValue=(event)=>{
 let name=event.target.name;

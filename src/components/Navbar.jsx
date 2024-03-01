@@ -2,12 +2,14 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import { useTheme } from '../context/Themecontext';
 import { NavLink } from 'react-router-dom';
+import { useFilterContext } from '../context/filtercontext';
 
 
 
 
 export default function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const{womenselection,menselection}=useFilterContext();
  
   const { theme, updateTheme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
@@ -126,7 +128,7 @@ export default function Navbar() {
             {/* {isvisible ? document.getElementsByClassName('div').style.display="none":document.getElementsByClassName('div').style.display="block"} */}
              {/* {isVisible ? 'Hide' : 'Show'} */}
             {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
-            <NavLink to="/customer-id" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</NavLink>
+            <NavLink to="/login" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</NavLink>
             <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">My orders</NavLink>
             <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</NavLink>
           </div>
