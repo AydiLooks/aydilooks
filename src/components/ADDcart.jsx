@@ -32,7 +32,7 @@ export default function ADDcart({product}) {
         </p>
         </div>
         {/* add to cart */}
-        <CardAmountToggle amount={amount} setDecrease={setDecrease} setIncrease={setIncrease}></CardAmountToggle>
+        <CardAmountToggle amount={amount} setDecrease={()=>{setDecrease(id)}} setIncrease={()=>{setIncrease(id)}}></CardAmountToggle>
         <NavLink to="/cart" onClick={()=>addtoCart(id,color,stock,amount,product)}>
         <button class="button">
         ADD to Cart

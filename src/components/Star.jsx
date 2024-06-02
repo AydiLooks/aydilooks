@@ -19,7 +19,7 @@ export default function Star({star,review}) {
 
    return (
     <>
-    <div className='icon style'>
+    <div className=''>
       {ratingstar}
 
       <p style={{fontFamily:theme.font,fontSize:theme.size}} className='text-lg'>{review}&nbsp;customer reviews:)</p>

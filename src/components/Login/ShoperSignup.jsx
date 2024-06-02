@@ -1,10 +1,13 @@
 import React from 'react'
-import './Signup.css'
 import axios from 'axios';
-import MyLottieAnimation from './LottieAnimation';
+import { useState } from 'react';
+// import MyLottieAnimation from './LottieAnimation';
+import MyLottieAnimation from '../LottieAnimation';
 import { cuteAlert } from 'cute-alert'
+import { NavLink } from 'react-router-dom';
 
-export default function Signup() {
+export default function ShoperSignup() {
+   
   function Submit(){
     const formData = {
       email: document.getElementById('email').value,
@@ -23,6 +26,7 @@ export default function Signup() {
     axios.post('https://example.com/api/addFormData', formData)
     .then(response => {
       console.log('Success:', response.data);
+      
     })
     .catch(error => {
       console.error('Error:', error);
@@ -30,6 +34,7 @@ export default function Signup() {
   }
   else {
     alert('Entries are not valid');
+    
   }
   }
   return (
@@ -51,9 +56,9 @@ export default function Signup() {
         use special symbols(@),a-z,A-Z,1-10</p>
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-slate-950 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={Submit}>
+       <NavLink to=""><button class="bg-slate-950 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={Submit} >
           Sign In
-        </button>
+        </button></NavLink>
         <a class="inline-block align-baseline font-bold text-sm text-black-500 hover:text-blue-800" href="#">
           Forgot Password?
         </a>

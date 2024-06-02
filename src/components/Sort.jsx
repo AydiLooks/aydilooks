@@ -16,34 +16,64 @@ export default function Sort() {
 
   
   return (
+    // <div className='mb-16 mt-4 border-2 p-4'>
+    //   <div className='grid grid-cols-3 gap-3'>
+    //       <div className='toogle'>
+    //       <input id="checkbox" type="checkbox" onChange={handleCheckboxChange}/>
+    // <label class="toggle" for="checkbox">
+    //     <div id="bar1" class="bars"></div>
+    //     <div id="bar2" class="bars"></div>
+    //     <div id="bar3" class="bars"></div>
+    // </label>
+    //       </div>
+    //       <div className='product-data'>
+    //         <p>{`${filter_products.length} Products Available`}</p>
+    //       </div>
+    //       <div className='filter'>
+    //         <form action='#'>
+    //           <label htmlFor='sort'></label>
+    //           <select name="sort" id='sort' className='border-2' onClick={sorting} >
+    //           <option value='lowest'>Price(lowest)</option>
+    //           <option value='#'disabled></option>
+    //           <option value='highest'>Price(highest)</option>
+    //           <option value='#'disabled></option>
+    //           <option value='a-z'>Price(a-z)</option>
+    //           <option value='#'disabled></option>
+    //           <option value='z-a'>Price(z-a)</option>
+    //           </select>
+    //         </form>
+    //       </div>
+    //   </div>
+    // </div>
     <div className='mb-16 mt-4 border-2 p-4'>
-      <div className='grid grid-cols-3 gap-3'>
-          <div className='toogle'>
-          <input id="checkbox" type="checkbox" onChange={handleCheckboxChange}/>
-    <label class="toggle" for="checkbox">
-        <div id="bar1" class="bars"></div>
-        <div id="bar2" class="bars"></div>
-        <div id="bar3" class="bars"></div>
-    </label>
-          </div>
-          <div className='product-data'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
+        <div className='toggle'>
+            <input id="checkbox" type="checkbox" onChange={handleCheckboxChange} />
+            <label className="toggle" htmlFor="checkbox">
+                <div id="bar1" className="bars"></div>
+                <div id="bar2" className="bars"></div>
+                <div id="bar3" className="bars"></div>
+            </label>
+        </div>
+        <div className='product-data'>
             <p>{`${filter_products.length} Products Available`}</p>
-          </div>
-          <div className='filter'>
+        </div>
+        <div className='filter'>
             <form action='#'>
-              <label htmlFor='sort'></label>
-              <select name="sort" id='sort' className='border-2' onClick={sorting} >
-              <option value='lowest'>Price(lowest)</option>
-              <option value='#'disabled></option>
-              <option value='highest'>Price(highest)</option>
-              <option value='#'disabled></option>
-              <option value='a-z'>Price(a-z)</option>
-              <option value='#'disabled></option>
-              <option value='z-a'>Price(z-a)</option>
-              </select>
+                <label htmlFor='sort'></label>
+                <select name="sort" id='sort' className='border-2' onClick={sorting} >
+                    <option value='lowest'>Price(lowest)</option>
+                    <option value='#' disabled></option>
+                    <option value='highest'>Price(highest)</option>
+                    <option value='#' disabled></option>
+                    <option value='a-z'>Price(a-z)</option>
+                    <option value='#' disabled></option>
+                    <option value='z-a'>Price(z-a)</option>
+                </select>
             </form>
-          </div>
-      </div>
+        </div>
     </div>
+</div>
+
   )
 }
