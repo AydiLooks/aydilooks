@@ -28,7 +28,7 @@ export default function Product(currele) {
               <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-black">{name}</h3>
             </a>
              <div className="flex items-center mt-2.5 mb-5">
-              {/*
+{/*               
               <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
                 <path

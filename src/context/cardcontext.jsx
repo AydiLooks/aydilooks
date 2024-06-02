@@ -28,13 +28,20 @@ const CartProvider=({children})=>{
     const clearcart=()=>{
         dispatch({type:"CLEAR_Cart"});
     }
+    const setDecrease=(id)=>{
+        dispatch({type:"setDecrease",payload:id})
+    }
+    const setIncrease=(id)=>{
+        dispatch({type:"setIncrease",payload:id})
+    }
     // to add the data to local storage  :allways string added
     //get vs set
     useEffect(()=>{
+        dispatch({type:"CART_TOTAL_ITEM"});
         localStorage.setItem("mycart",JSON.stringify(state.cart));
     },[state.cart]);
     return(
-    <CartContext.Provider value={{...state,addtoCart,Removefromcart,clearcart}}>
+    <CartContext.Provider value={{...state,addtoCart,Removefromcart,clearcart,setDecrease,setIncrease}}>
         {children}
         </CartContext.Provider>
     );

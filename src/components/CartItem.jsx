@@ -5,17 +5,7 @@ import CardAmountToggle from './CardAmountToggle'
 import { useCartContext } from '../context/cardcontext';
 
 export default function CartItem({ id, name, image,stock, color, price,amount }) {
-//   const[amount,setAmount]=useState(initialAmount);
-    const setDecrease=()=>{
-        // amount>1?setAmount(initialAmount-1):setAmount(1);
-   };
-   const setIncrease=()=>{
-      //  amount<stock?setAmount(initialAmount+1):setAmount(stock);
-   };
-//    useEffect(() => {
-//     setAmount(initialAmount); // Update amount state whenever initialAmount prop changes
-// }, [initialAmount]);
-   const{Removefromcart}=useCartContext();
+   const{Removefromcart,setDecrease,setIncrease}=useCartContext();
     return (
         
             <div className='grid grid-cols-5 mt-16'>
@@ -31,7 +21,7 @@ export default function CartItem({ id, name, image,stock, color, price,amount })
                 </div>
 
                 <div className='mt-6  text-2xl'>Rs.{price}</div>
-                <div className='mt-6 text-2xl'><CardAmountToggle amount={amount} setDecrease={setDecrease} setIncrease={setIncrease}></CardAmountToggle></div>
+                <div className='mt-6 text-2xl'><CardAmountToggle amount={amount} setDecrease={()=>setDecrease(id)} setIncrease={()=>setIncrease(id)}></CardAmountToggle></div>
                 <div className='mt-6 text-2xl'>Rs.{price *amount}</div>
                 <div className='trash'>
                 <button className="bin-button" onClick={()=>{Removefromcart(id)}}>
