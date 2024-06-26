@@ -12,8 +12,7 @@ import { useCartContext } from '../context/cardcontext';
 
 export default function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
-  // const { womenselection, menselection } = useFilterContext();
-  const{total_item}=useCartContext();
+  const { total_item } = useCartContext();
 
   const { theme, updateTheme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +28,7 @@ export default function Navbar() {
     setScrollPosition(position);
   };
 
-  const { loginWithRedirect, logout,isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -44,11 +43,9 @@ export default function Navbar() {
   //   });
   // };
 
-  const navbarBackgroundColor = scrollPosition > 0 ? 'bg-black' : ' ';
-
   return (
     <div className=''>
-      <nav className="fixed top-0 w-full z-10 mb-4 " style={{ fontFamily: theme.font, fontSize: theme.size, color: theme.color ,backgroundColor:{navbarBackgroundColor}}}>
+      <nav className="fixed top-0 w-full z-10 mb-4 bg-red-200 " style={{ fontFamily: theme.font, fontSize: theme.size, color: theme.color, backgroundColor: "bg-red-300" }}>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -87,51 +84,53 @@ export default function Navbar() {
 
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  
-                  <NavLink to="/" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2  " aria-current="page">Home</NavLink>
-                  <NavLink to="/men" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 ">Men</NavLink>
-                  <NavLink to="/women" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2">Women</NavLink>
-                  <NavLink to="/beauty" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 ">Beauty</NavLink>
-                  <NavLink to="/stationary" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 ">Stationary</NavLink>
+
+                  <NavLink to="/" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2" aria-current="page">Home</NavLink>
+                  <NavLink to="/products" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2">All Products</NavLink>
 
                 </div>
               </div>
             </div>
-            <div className="relative inline-block">
-      <NavLink to="/cart">
-        <button
-          type="button"
-          className="relative flex rounded-full text-sm focus:outline-none focus:ring-2  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-          aria-expanded="false"
-          aria-haspopup="true"
-        >
-          <span
-            style={{
-              fontSize: "12px",
-              background: "#ff0000",
-              color: "#fff",
-              padding: "1px 6px",
-              borderRadius: "50%",
-              position: "absolute",
-              top: "-4px",
-              right: "-4px",
-              verticalAlign: "top",
-              zIndex: 10
-            }}
-            className='rounded-full'
-          >
-            {total_item}
-          </span>
-          <img
-            className="h-8 w-8 rounded-full"
-            src="https://tse4.mm.bing.net/th?id=OIP.eS2jtQlEpqMtlq3Zy6YU_gHaHa&pid=Api&P=0&h=220"
-            alt="Cart"
-          />
-        </button>
-      </NavLink>
-    </div>
+           
 
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 grid grid-cols-2">
+               {/* supplier button */}
+            <div className=''><NavLink to="shopkeeper/" className=" hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 mr-8" aria-current="page">Become a Supplier</NavLink></div>
+             {/* cart */}
+             <div className='grid grid-cols-2'>
+             <div className="relative inline-block">
+              <NavLink to="/cart">
+                <button
+                  type="button"
+                  className="relative flex rounded-full text-sm focus:outline-none focus:ring-2  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      background: "#ff0000",
+                      color: "#fff",
+                      padding: "1px 6px",
+                      borderRadius: "50%",
+                      position: "absolute",
+                      top: "-4px",
+                      right: "-4px",
+                      verticalAlign: "top",
+                      zIndex: 10
+                    }}
+                    className='rounded-full'
+                  >
+                    {total_item}
+                  </span>
+                  <img
+                    className="h-8 w-8 rounded-full"
+                    src="https://tse4.mm.bing.net/th?id=OIP.eS2jtQlEpqMtlq3Zy6YU_gHaHa&pid=Api&P=0&h=220"
+                    alt="Cart"
+                  />
+                </button>
+              </NavLink>
+            </div>
 
               {/* <!-- Profile dropdown --> */}
               <div className="relative ml-3">
@@ -148,25 +147,17 @@ export default function Navbar() {
                     {/* {isvisible ? document.getElementsByClassName('div').style.display="none":document.getElementsByClassName('div').style.display="block"} */}
                     {/* {isVisible ? 'Hide' : 'Show'} */}
                     {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
-                    <NavLink to="/login" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Log In</NavLink>
-                    {/* {isAuthenticated?
-                    (<button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-                    Log Out
-                  </button>):
-                    (<button onClick={() => loginWithRedirect()}>Log In</button>)
-                    
-                  } */}
-                    
-                    <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">My orders</NavLink>
-                    
-                    <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</NavLink>
+                    <NavLink to="customer/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Register</NavLink>
+                    <NavLink to="login/customer" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Login</NavLink>
+                    <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">My orders</NavLink>
+                    <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Delete Account</NavLink>
                   </div>
                   : ""}
               </div>
             </div>
           </div>
         </div>
-
+        </div>
         {/* <!-- Mobile menu, show/hide based on menu state. --> */}
         {show ?
           <div className="sm:hidden" id="mobile-menu">
@@ -174,9 +165,8 @@ export default function Navbar() {
 
               {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
               <NavLink to="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</NavLink>
-              <NavLink to="/men" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Men</NavLink>
-              <NavLink to="/women" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Women</NavLink>
-              <NavLink to="/beauty" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Beauty</NavLink>
+              <NavLink to="/men" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">All Products</NavLink>
+
             </div>
           </div>
           : ""}

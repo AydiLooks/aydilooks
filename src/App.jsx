@@ -7,13 +7,13 @@ import{ BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import SingleProduct from './components/SingleProduct';
 import Home from './components/Home';
 import Men from './components/Men';
-import Women from './components/Women';
 import Cart from './components/Cart';
-import User from './components/User';
 import CustomerSignup from './components/Login/CustomerSignup';
 import ShoperSignup from './components/Login/ShoperSignup';
 import CustomerProfile from './components/ProfileSection/CustomerProfile';
 import TotalBilling from './components/Payment/TotalBilling';
+import CustomerLogin from './components/Login/CustomerLogin';
+import Shopkeeperlogin from './components/Login/Shopkeeperlogin';
 
 // import Signup from './components/signup';
 // import PrivateRoute from './components/Priveteroute';
@@ -39,13 +39,13 @@ function App() {
     <Navbar/>
    <Routes>
     <Route path="/"element={<Home/>}></Route>
-    <Route path="/men"element={<Men/>}></Route>
-    <Route path="/women"element={<Women/>}></Route>
+    <Route path="/products"element={<Men/>}></Route>
     <Route path="/singleproduct/:id" element={<SingleProduct/>}></Route>
     <Route path="/cart" element={<Cart/>}></Route>
-    <Route path="/login" element={<User/>}></Route>
-    <Route path='/login/customer/' element={<CustomerSignup/>}></Route>
-    <Route path='/login/shopkeeper' element={<ShoperSignup/>}></Route>
+    <Route path="login/shopkeeper/" element={<Shopkeeperlogin/>}></Route>
+    <Route path="login/customer/" element={<CustomerLogin/>}></Route>
+    <Route path='customer/' element={<CustomerSignup/>}></Route>
+    <Route path='shopkeeper/' element={<ShoperSignup/>}></Route>
     <Route path='/customer-profile'element={<CustomerProfile/>}></Route>
     <Route path='/payment' element={<TotalBilling/>}></Route>
     
