@@ -1,5 +1,5 @@
 import React from 'react'
-import myimage from '../assets/39ebac85e4e5bdb06af7eafe1066a524-removebg-preview.png'
+// import myimage from '../assets/39ebac85e4e5bdb06af7eafe1066a524-removebg-preview.png'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-scroll';
 // import Featuredproducts from './Featuredproducts'
@@ -7,12 +7,7 @@ import { Link } from 'react-scroll';
 
 export default function Middleone () {
   return (
-<div className='banner-area grid grid-cols-1 md:grid-cols-2'>
-             {/* <div class="ball" style={{top: "20vh", left: "95vw"}}></div>
-          <div class="ball" style={{top: "50vh", left: "40vw"}}></div>
-          <div class="ball" style={{top: "30vh", left: "70vw"}}></div>
-          <div class="ball" style={{top: "70vh", left: "10vw"}}></div> */}
-
+<div className='banner-area grid grid-cols-1 md:grid-cols-2 bg-red-200'>
 
       <div className='text mt-8 md:mt-56' style={{ paddingLeft: "5%", paddingRight: "5%" }}>
         <h1 className='font-bold text-3xl md:text-5xl'>Elegance is not standing out, but being remembered.</h1><br></br>
@@ -28,7 +23,7 @@ export default function Middleone () {
 
       </div>
       <div className='img pt-32 mt-32 md:pt-0'>
-        <img src={myimage} alt="Your Image" className="max-w-full" />
+        {/* <img src={myimage} alt="Your Image" className="max-w-full" /> */}
       </div>
     </div>
 

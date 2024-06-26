@@ -13,7 +13,7 @@ export default function LoginButton() {
         <h1 className='text-3xl text-gray-600'>
           Feel Free to shop:)
         </h1>
-       <NavLink to="/login/customer"> <button className="button mt-4 h-3/4">CUSTOMER</button></NavLink>
+       <NavLink to="customer/"> <button className="button mt-4 h-3/4">CUSTOMER</button></NavLink>
        <br></br></div>
       <div className='m-4 ml-8'>
       <h1 className='text-3xl text-gray-600'>
