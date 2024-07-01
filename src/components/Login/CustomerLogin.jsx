@@ -33,6 +33,8 @@ export default function CustomerSignup() {
       axios.post('http://localhost:8000/api/v1/u/login/customer/',  formData)
     .then(response => {
       console.log('Success:', response.data);
+      localStorage.setItem('access_token', response.data.access);
+      localStorage.setItem('refresh_token', response.data.refresh);
       setNavigate(true);
     })
     .catch(error => {

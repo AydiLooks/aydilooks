@@ -15,24 +15,12 @@ import TotalBilling from './components/Payment/TotalBilling';
 import CustomerLogin from './components/Login/CustomerLogin';
 import Shopkeeperlogin from './components/Login/Shopkeeperlogin';
 
-// import Signup from './components/signup';
-// import PrivateRoute from './components/Priveteroute';
+
 
 
 
 function App() {
-  // const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const verifyAuth = async () => {
-  //     const isAuthenticated = await checkAuth();
-  //     if (!isAuthenticated) {
-  //       navigate('/login'); // Redirect to login page
-  //     }
-  //   };
-
-  //   verifyAuth();
-  // }, [navigate]);
   return (
   <>
   <Router>
