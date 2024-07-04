@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
+    "@dicebear/avatars": "^4.10.8",
+    "@dicebear/avatars-avataaars-sprites": "^4.10.8",
+    "@dotlottie/player-component": "^2.7.12",
     "@react-icons/all-files": "^4.1.0",
     "axios": "^1.6.3",
     "cute-alert": "^0.0.3",

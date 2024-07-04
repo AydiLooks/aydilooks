@@ -1,6 +1,5 @@
 import React from 'react'
-import "./ADDcart.css"
-
+import './Addcart.css'
 export default function CardAmountToggle({ amount, setDecrease, setIncrease }) {
   return (
     <div>

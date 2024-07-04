@@ -1,26 +1,3 @@
-// src/utils/axios.js
-// import axios from 'axios';
-
-// const instance = axios.create({
-//   baseURL: 'http://localhost:8000',
-//   withCredentials: true, 
-// });
-
-// instance.interceptors.request.use(
-//   config => {
-//     const token = localStorage.getItem('access_token');
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   error => {
-//     return Promise.reject(error);
-//   }
-// );
-
-// export default instance;
-// src/utils/axios.js
 import axios from 'axios';
 
 const instance = axios.create({
@@ -56,19 +33,23 @@ instance.interceptors.response.use(
       const refreshToken = localStorage.getItem('refresh_token');
       if (refreshToken) {
         try {
-          const response = await axios.post('http://localhost:8000/api/token/refresh/', {
+          const response = await axios.post('http://localhost:8000/api/v1/u/logout/', {
             refresh: refreshToken
           });
           const newAccessToken = response.data.access;
           localStorage.setItem('access_token', newAccessToken);
           // Update default headers and original request headers with new token
-          axios.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
-          originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-          return axios(originalRequest); // Retry original request with new token
+          error.config.headers['Authorization'] = `Bearer ${newAccessToken}`;
+          return axios(error.config); // Retry original request with new token
         } catch (error) {
           console.error('Error refreshing token:', error);
           // Handle token refresh failure (e.g., redirect to login)
-          // You might want to clear tokens, log out the user, etc.
+          // Clear tokens, log out the user, etc.
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          localStorage.removeItem('first_name');
+          // Example: Redirect to login page
+          window.location.href = '/login/customer';
         }
       }
     }

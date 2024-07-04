@@ -7,7 +7,7 @@ export default function PageNavigator({title}) {
   const { theme, updateTheme } = useTheme();
   return (
     <div className='py-6'style={{fontFamily:theme.font,fontSize:theme.size,color:!theme.color}}>
-        <NavLink to="/"className="text-blue-600 ">Home</NavLink>/{title}
+        <NavLink to="/"className="text-blue-600 ">Home</NavLink>/<NavLink to="/products" className="text-blue-600">Products</NavLink>/{title}
     </div>
   )
 }

@@ -19,10 +19,10 @@ const Footer = () => {
         <div className="text-center">
         <h2 className="">Contact Us</h2>
           <p>
-            Address: 123 Main Street, City, Country
+            Address: KIET Group Of Institution<br></br>Muradnagar<br></br>Pincode:201206
           </p>
           <p>
-            Email: info@example.com
+            Email: aydilooks@gmail.com
           </p>
           {/* Add more contact information if needed */}
         </div>
@@ -41,11 +41,11 @@ const Footer = () => {
         
       </div>
       <br></br>
-      <div className="text-center animate-pulse">
+      <div className="text-center animate-pulse mb-44">
         <p>&copy; {new Date().getFullYear()}&nbsp;AYDILOOKS</p>
         {/* You can include additional information like copyright */}
       </div>
-      <br></br>
+      <br></br><br></br><br></br>
     </footer>
   
   );
