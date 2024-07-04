@@ -5,7 +5,7 @@ import MyLottieAnimation from '../LottieAnimation';
 import { cuteAlert } from 'cute-alert'
 import { useState } from 'react';
 
-export default function CustomerSignup() {
+export default function CustomerLogin() {
   const [isValid, setIsValid] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,6 +35,7 @@ export default function CustomerSignup() {
       console.log('Success:', response.data);
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
+      localStorage.setItem('first_name',response.data.first_name);
       setNavigate(true);
     })
     .catch(error => {

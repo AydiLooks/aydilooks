@@ -3,16 +3,20 @@ import { useCartContext } from '../context/cardcontext'
 import CartItem from './CartItem';
 import './cart.css'
 import { NavLink } from 'react-router-dom';
+import CustomerLogin from './Login/CustomerLogin';
 
 
 const goBack = () => {
   window.history.back();
 }
 
-export default function Cart() {
+export default function Cart({isAuthenticated}) {
   const { cart, clearcart } = useCartContext();
 
   // console.log(cart);
+  if (!isAuthenticated) {
+    return <CustomerLogin />;
+  }
   if (cart.length === 0) {
     return (
       <div className='mt-44 ml-24 text-center justify-center items-center'><p className='text-5xl'>No items in the Cart!!</p></div>
@@ -69,7 +73,8 @@ export default function Cart() {
       <div>
        
       </div>
-    </div>
+    </div> 
+
 
   )
 }
