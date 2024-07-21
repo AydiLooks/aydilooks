@@ -7,6 +7,7 @@ import { ThemeProvider } from './context/Themecontext.jsx'
 import { FilterContextProvider } from './context/filtercontext.jsx'
 import { CartProvider } from './context/cardcontext.jsx'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary.jsx'
+import { AuthProvider } from './utills/CheckAuth.jsx'
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // import './tailwind.css';
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AppProvider>
         <FilterContextProvider>
           <CartProvider>
+          <AuthProvider>
             <ErrorBoundary>
             <App />
             {/* <Router> */}
@@ -29,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Routes>
     </Router> */}
     </ErrorBoundary>
+    </AuthProvider>
           </CartProvider>
         </FilterContextProvider>
       </AppProvider>

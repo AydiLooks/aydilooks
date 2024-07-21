@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef,useContext  } from 'react';
 import { useTheme } from '../context/Themecontext';
 import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../context/cardcontext';
+import { AuthContext } from '../utills/CheckAuth';
 
 export default function Navbar({ user }) {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -9,6 +10,9 @@ export default function Navbar({ user }) {
   const { theme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const [show, setShow] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);
+  const menuRef = useRef(null);
+  const { isAuthenticated} = useContext(AuthContext);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -22,9 +26,33 @@ export default function Navbar({ user }) {
     };
   }, []);
 
+  const handleMouseEnter = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    setIsVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    const id = setTimeout(() => setIsVisible(false), 300); // Adjust delay time as needed
+    setTimeoutId(id);
+  };
+
+  const handleMenuMouseEnter = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    setIsVisible(true);
+  };
+
+  const handleMenuMouseLeave = () => {
+    const id = setTimeout(() => setIsVisible(false), 300); // Adjust delay time as needed
+    setTimeoutId(id);
+  };
+
   return (
-    <div className=''>
-      <nav className="fixed top-0 w-full z-10 bg-red-200" style={{ fontFamily: theme.font, fontSize: theme.size, color: theme.color }}>
+    <div>
+      <nav className="top-0 w-full z-10 bg-gradient-to-l from-blue-300 via-pink-300 to-purple-400 text-white" style={{ fontFamily: theme.font, fontSize: theme.size, color: theme.color }}>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -32,7 +60,7 @@ export default function Navbar({ user }) {
                 type="button"
                 className="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                 aria-controls="mobile-menu"
-                aria-expanded="false"
+                aria-expanded={show}
                 onClick={() => setShow(!show)}
               >
                 <span className="sr-only">Open main menu</span>
@@ -95,37 +123,38 @@ export default function Navbar({ user }) {
                     </button>
                   </NavLink>
                 </div>
-                <div className="relative ml-2">
-                  <div>
-                    <button
-                      type="button"
-                      className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      id="user-menu-button"
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                      onMouseEnter={() => setIsVisible(true)}
-                      onMouseLeave={() => setIsVisible(false)}
-                    >
-                      <span className="sr-only">Open user menu</span>
-                      <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </button>
-                  </div>
+                <div
+                  className="relative ml-2"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <button
+                    type="button"
+                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    id="user-menu-button"
+                    aria-expanded={isVisible}
+                    aria-haspopup="true"
+                  >
+                    <span className="sr-only">Open user menu</span>
+                    <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                  </button>
                   {isVisible && (
                     <div
+                      ref={menuRef}
                       className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu-button"
-                      onMouseEnter={() => setIsVisible(true)}
-                      onMouseLeave={() => setIsVisible(false)}
+                      onMouseEnter={handleMenuMouseEnter}
+                      onMouseLeave={handleMenuMouseLeave}
                     >
-                      {!user ? (
+                      {isAuthenticated ? (
+                        <NavLink to="logout/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">Logout</NavLink>
+                      ) : (
                         <>
                           <NavLink to="customer/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">Register</NavLink>
                           <NavLink to="login/customer" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">Login</NavLink>
                         </>
-                      ) : (
-                        <NavLink to="logout/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">Logout</NavLink>
                       )}
                       <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">My orders</NavLink>
                       <NavLink to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">Delete Account</NavLink>

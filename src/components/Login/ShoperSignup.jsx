@@ -13,7 +13,7 @@ export default function ShoperSignup() {
   const[last_name,setLastname]=useState('');
   const [password, setPassword] = useState('');
    
-  function Submit(e){
+  const Submit=(e)=>{
     const formData = {
       email: document.getElementById('email').value,
       password:document.getElementById('password').value,

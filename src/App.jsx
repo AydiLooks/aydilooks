@@ -19,35 +19,19 @@ import Logout from './components/Login/Logout';
 
 
 
+
 function App() {
-  const [username, setUsername] = useState(localStorage.getItem('first_name') || " ");
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('access_token'));
-
-  useEffect(() => {
-    // This effect will run when the component mounts and when username changes.
-    const storedUsername = localStorage.getItem('first_name');
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-    
-    // Check authentication status
-    const token = localStorage.getItem('access_token');
-    setIsAuthenticated(!!token);
-
-    console.log(isAuthenticated, "hey");
-  }, [isAuthenticated, username]);
-
   
 
   return (
   <>
   <Router>
-    <Navbar user={username}/>
+    <Navbar/>
    <Routes>
     <Route path="/"element={<Home/>}></Route>
     <Route path="/products"element={<Men/>}></Route>
     <Route path="/singleproduct/:id" element={<SingleProduct/>}></Route>
-    <Route path="/cart" element={<Cart  Authenticated={isAuthenticated}/>}  />
+    <Route path="/cart" element={<Cart/>}  />
     <Route path="login/shopkeeper/" element={<Shopkeeperlogin/>}></Route>
     <Route path="login/customer/" element={<CustomerLogin/>}></Route>
     <Route path='customer/' element={<CustomerSignup/>}></Route>

@@ -14,7 +14,7 @@ export default function CustomerSignup() {
   const[last_name,setLastname]=useState('');
   const [password, setPassword] = useState('');
   const [navigate,setNavigate]=useState(false);
-  function Submit(e){
+  const Submit=(e)=>{
     e.preventDefault();
     const formData = {
       email: document.getElementById('email').value,
