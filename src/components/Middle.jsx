@@ -8,7 +8,7 @@ export default function Middle() {
     const { theme, updateTheme } = useTheme();
     return (
         <>
-            <div className="bg-slate-100 w-full md:w-10/12 mx-auto md:ml-40 md:mr-16 rounded md:mt-44 grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="bg-slate-100 w-full md:w-10/12 mx-auto md:ml-40 md:mr-16 rounded md:mt-44 mb-32 grid grid-cols-1 md:grid-cols-2 gap-2 ">
                 <div className="md:ml-20">
                     <p className="font-bold text-2xl md:text-5xl float-left my-4 md:my-12 ml-4 md:ml-20 text-slate-800 pt-8 md:pt-16 mb-8 md:mb-16">
                         Lowest Prices <br />
@@ -27,8 +27,17 @@ export default function Middle() {
                     </div>
                 </div>
                 <div className='hidden md:block'>
-                   {/* <MiddleLottie/> */}
-                </div>
+  {/* <MiddleLottie/> */}
+  <div className='grid grid-cols-3 gap-0'>
+    <img src='https://i.pinimg.com/474x/d6/65/a5/d665a50019ea2842d8d16b2e61ffbfb3.jpg' className='h-44 w-full object-cover' />
+    <img src='https://i.pinimg.com/236x/5a/cb/48/5acb48243c147785c15496e5b0d742ce.jpg' className='h-44 w-full object-cover' />
+  </div>
+  <div className='grid grid-cols-3 gap-0'>
+    <img src='https://i.pinimg.com/474x/bb/cf/b1/bbcfb174ed9297f73f5f3ec9452da148.jpg' className='h-44 w-full object-cover' />
+    <img src='https://i.pinimg.com/236x/e7/40/6d/e7406d301c9af904974f79ed48dc6b7c.jpg' className='h-44 w-full object-cover' />
+  </div>
+</div>
+
             </div>
 
             <br /><br />
@@ -46,7 +55,7 @@ export default function Middle() {
                 <p className='text-center md:text-right m-4 md:mx-24'>
                     <h1 className='text-bold text-4xl md:text-6xl'>WOMEN COLLECTION</h1>
                     <br /><br />
-                    <NavLink to="/women">
+                    <NavLink to="/products">
                         <button className="button-86 md:float-right" role="button">Explore</button>
                     </NavLink>
                 </p>
@@ -56,7 +65,7 @@ export default function Middle() {
                 <p className='text-center md:text-left mx-4 md:mx-16 m-4 '>
                     <h1 className='text-bold text-4xl md:text-6xl'>MEN COLLECTION</h1>
                     <br /><br />
-                    <NavLink to="/men">
+                    <NavLink to="/products">
                         <button className="button-86 md:float-left" role="button">Explore</button>
                     </NavLink>
                 </p>
@@ -84,7 +93,7 @@ export default function Middle() {
                 <p className='text-center md:text-right m-4 md:mx-24'>
                     <h1 className='text-bold text-4xl md:text-6xl'>BEAUTY</h1>
                     <br /><br />
-                    <NavLink to="/beauty">
+                    <NavLink to="/products">
                         <button className="button-86 md:float-right" role="button">Explore</button>
                     </NavLink>
                 </p>

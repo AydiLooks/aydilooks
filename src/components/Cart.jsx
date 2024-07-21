@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useCartContext } from '../context/cardcontext'
 import CartItem from './CartItem';
 import './cart.css'
 import { NavLink } from 'react-router-dom';
 import CustomerLogin from './Login/CustomerLogin';
+import { AuthContext } from '../utills/CheckAuth';
 
 
 const goBack = () => {
   window.history.back();
 }
 
-export default function Cart({isAuthenticated}) {
+export default function Cart() {
   const { cart, clearcart } = useCartContext();
+  const {isAuthenticated}=useContext(AuthContext);
 
   // console.log(cart);
   if (!isAuthenticated) {

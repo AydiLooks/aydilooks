@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from'../../utills/axios'
 import {Navigate} from 'react-router-dom';
 import MyLottieAnimation from '../LottieAnimation';
 import { cuteAlert } from 'cute-alert'
 import { useState } from 'react';
+import { AuthContext } from '../../utills/CheckAuth';
 
 export default function CustomerLogin() {
   const [isValid, setIsValid] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [navigate,setNavigate]=useState(false);
-  function Submit(e){
+  const {login}=useContext(AuthContext);
+  const Submit = async (e)=>{
     e.preventDefault();
     const formData = {
       email: document.getElementById('email').value,
@@ -30,17 +32,19 @@ export default function CustomerLogin() {
         title: 'Registration Confirmed',
         description: 'Thank you for being the member:)',
         })
-      axios.post('http://localhost:8000/api/v1/u/login/customer/',  formData)
-    .then(response => {
-      console.log('Success:', response.data);
-      localStorage.setItem('access_token', response.data.access);
-      localStorage.setItem('refresh_token', response.data.refresh);
-      localStorage.setItem('first_name',response.data.first_name);
-      setNavigate(true);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+    //   axios.post('http://localhost:8000/api/v1/u/login/customer/',  formData)
+    // .then(response => {
+    //   console.log('Success:', response.data);
+    //   localStorage.setItem('access_token', response.data.access);
+    //   localStorage.setItem('refresh_token', response.data.refresh);
+    //   localStorage.setItem('first_name',response.data.first_name);
+    //   console.log(response.data.access);
+    //   setNavigate(true);
+    await login(formData, setNavigate);
+    // }
+    // .catch(error => {
+    //   console.error('Error:', error);
+    // });
   }
   else {
     cuteAlert({
@@ -62,7 +66,7 @@ export default function CustomerLogin() {
         <label class="block text-gray-900 text-sm font-bold mb-2" htmlFor="email">
         Email
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" required />
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" required />
       </div>
       <div class="mb-6">
         <label class="block text-gray-900 text-sm font-bold mb-2" htmlFor="password">

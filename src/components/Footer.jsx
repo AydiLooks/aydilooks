@@ -1,53 +1,39 @@
-// Footer.js
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import './Footer.css'; // Add your CSS styles for the footer in Footer.css file
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white font-normal w-full h-full pt-24 pr-4 pl-4 mt-14">
-      <div className="grid grid-cols-3 gap-4">
-        <div className="float-left">
-          <h2>About Us</h2>
-          <p>
-          Elevate your style, simplify your shopping -<br></br> AydiLooks is where trends meet convenience.
-          </p>
-          {/* Add more content or links if needed */}
+    <footer className="bg-gray-900 text-white font-normal w-full pt-12 px-6 mt-14 min-h-screen flex flex-col justify-between">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 flex-grow">
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">About Us</h2>
+          <p className="text-lg mb-2"><strong>Your Campus Convenience, Delivered!</strong></p>
+          <p className="mb-2">Welcome to AydiLooks, your go-to e-commerce platform tailored to meet all the needs of our college community. We understand the hustle and bustle of student life, and our mission is to ensure you have everything you need, right when you need it.</p>
+          <p className="mb-2">From textbooks to tech gadgets, snacks to stationery, and everything in between, we’ve got you covered. Our goal is to provide a seamless shopping experience, with fast and reliable delivery right to your doorstep.</p>
+          <p>Join us in making college life easier and more convenient. Happy shopping!</p>
         </div>
 
-        <div className="text-center">
-        <h2 className="">Contact Us</h2>
-          <p>
-            Address: KIET Group Of Institution<br></br>Muradnagar<br></br>Pincode:201206
-          </p>
-          <p>
-            Email: aydilooks@gmail.com
-          </p>
-          {/* Add more contact information if needed */}
+        <div className="mb-8 text-center md:text-left">
+          <h2 className="text-xl font-semibold mb-4">Contact Us</h2>
+          <p className="mb-2">Address: KIET Group Of Institution<br/>Muradnagar<br/>Pincode: 201206</p>
+          <p>Email: <a href="mailto:aydilooks@gmail.com" className="text-blue-400 hover:text-blue-300">aydilooks@gmail.com</a></p>
         </div>
 
-        <div className="justify-end">
-          
-          <ul className='grid grid-cols-4 gap-4'>
-            <li><NavLink to="/"className="hover:text-blue-500">Help</NavLink></li>
-            <li><NavLink to="/products"className="hover:text-blue-500">Follow Us </NavLink></li>
-            <li><NavLink to="/about"className="hover:text-blue-500">Company</NavLink></li>
-            <li><NavLink to="/contact"className="hover:text-blue-500">Policies</NavLink></li>
-            {/* Add more links as needed */}
+        <div className="mb-8 md:mb-0 text-center md:text-right">
+          <h2 className="text-xl font-semibold mb-4">Quick Links</h2>
+          <ul className="space-y-2">
+            <li><NavLink to="/" className="hover:text-blue-400">Help</NavLink></li>
+            <li><NavLink to="/products" className="hover:text-blue-400">Follow Us</NavLink></li>
+            <li><NavLink to="/about" className="hover:text-blue-400">Company</NavLink></li>
+            <li><NavLink to="/contact" className="hover:text-blue-400">Policies</NavLink></li>
           </ul>
         </div>
+      </div>
 
-        
+      <div className="text-center py-4 border-t border-gray-700 mt-8 animate-pulse">
+        <p>&copy; {new Date().getFullYear()} AYDILOOKS. All rights reserved.</p>
       </div>
-      <br></br>
-      <div className="text-center animate-pulse mb-44">
-        <p>&copy; {new Date().getFullYear()}&nbsp;AYDILOOKS</p>
-        {/* You can include additional information like copyright */}
-      </div>
-      <br></br><br></br><br></br>
     </footer>
-  
   );
 };
 
