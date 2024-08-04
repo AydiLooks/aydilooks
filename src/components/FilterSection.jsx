@@ -50,14 +50,12 @@
 //   )
 // }
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useFilterContext } from '../context/filtercontext';
 
 export default function FilterSection() {
-  const { filters: { text, category },
-    updateFilterValue,
-    all_products,
-  } = useFilterContext();
+  const { filters: { text, category }, updateFilterValue, all_products } = useFilterContext();
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   // Function to get unique data for filters
   const getUniqueData = (data, property) => {
@@ -65,15 +63,25 @@ export default function FilterSection() {
       return curelm[property];
     });
     return (newVal = ["All", ...new Set(newVal)]);
-  }
+  };
 
   // Getting unique categories and companies
   const categoryOnlyData = getUniqueData(all_products, "category");
   const companyOnlyData = getUniqueData(all_products, "company");
 
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className='flex'>
-      <div className='w-1/4 h-screen fixed top-0 left-0 p-4 border-r-2 bg-gray-200 overflow-y-auto'>
+    <div className='relative'>
+      {/* Sidebar for small screens */}
+      <div className={`fixed top-0 left-0 h-full bg-gray-200 border-r-2 transition-transform transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:w-1/4 w-64 p-4 overflow-y-auto z-50`}>
+        <button className='absolute top-2 right-2 p-2' onClick={handleSidebarToggle}>
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
             type='text'
@@ -115,7 +123,14 @@ export default function FilterSection() {
           </form>
         </div>
       </div>
-      <div className='w-3/4 ml-auto p-4'>
+
+      {/* Main content */}
+      <div className={`lg:w-3/4 ml-auto p-4 ${isSidebarOpen ? 'lg:ml-64' : ''}`}>
+        <button className='lg:hidden p-2 mb-4' onClick={handleSidebarToggle}>
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
         {/* Main content goes here */}
       </div>
     </div>
