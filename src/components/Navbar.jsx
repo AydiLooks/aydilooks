@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../context/cardcontext';
 import { AuthContext } from '../utills/CheckAuth';
 
-export default function Navbar({ user }) {
+export default function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const { total_item } = useCartContext();
   const { theme } = useTheme();
@@ -149,7 +149,10 @@ export default function Navbar({ user }) {
                       onMouseLeave={handleMenuMouseLeave}
                     >
                       {isAuthenticated ? (
+                        <>
                         <NavLink to="logout/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">Logout</NavLink>
+                        <NavLink to="/profile" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">My Profile</NavLink>
+                        </>
                       ) : (
                         <>
                           <NavLink to="customer/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem">Register</NavLink>

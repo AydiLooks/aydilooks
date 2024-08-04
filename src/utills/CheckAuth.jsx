@@ -1,15 +1,19 @@
 import React, { createContext, useState, useEffect } from 'react';
-import axios from './axios';
+import axiosInstance from './axios';
 
-// Create Context
+const defaultUserState = {
+  id: null,
+  first_name: '',
+  last_name: '',
+  email: '',
+};
+
 export const AuthContext = createContext();
 
-// Create Provider Component
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(defaultUserState);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Fetch user data when component mounts
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -18,26 +22,25 @@ export const AuthProvider = ({ children }) => {
           throw new Error('No access token found');
         }
 
-        const response = await axios.get('http://localhost:8000/api/v1/u/user/', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
+        const response = await axiosInstance.get('/api/v1/u/user/');
         setUser(response.data);
-        console.log(response.data);
+        setIsAuthenticated(true);
       } catch (error) {
-        console.error('Error:', error);
-        // Handle error, possibly refresh token or redirect to login
+        console.error('Error fetching user:', error);
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        localStorage.removeItem('first_name');
       }
     };
 
     fetchUser();
   }, []);
 
-  // Log in function
-  const login = async (credentials,setNavigate) => {
+  const login = async (credentials, setNavigate) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/u/login/customer/', credentials, { withCredentials: true });
+      console.log('Login Request Credentials:', credentials);  // Log credentials being sent
+      const response = await axiosInstance.post('/api/v1/u/login/customer/', credentials);
+      console.log('Login Response:', response.data);  // Log response data
       setUser(response.data);
       setIsAuthenticated(true);
       localStorage.setItem('access_token', response.data.access);
@@ -45,52 +48,31 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('first_name', response.data.first_name);
       setNavigate(true);
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login failed:', error.response);  // Log detailed error response
       setIsAuthenticated(false);
     }
   };
 
-  // Log out function
-      // const refreshToken = localStorage.getItem('refresh_token');
-      // if (refreshToken) {
-      //   try {
-      //     await axios.post('http://localhost:8000/api/v1/logout/', {
-      //       refresh_token: refreshToken,
-      //     });
-      //   } catch (error) {
-      //     console.error('Error logging out:', error);
-      //   }
-      // }
-  
-      // localStorage.removeItem('access_token');
-      // localStorage.removeItem('refresh_token');
-      // localStorage.removeItem('first_name');
-      // setUser(null);
-      // setIsAuthenticated(false);
-      const handleLogout = async () => {
-        const refreshToken = localStorage.getItem('refresh_token');
-        if (refreshToken) {
-          try {
-            await axios.post('http://localhost:8000/api/v1/logout/', {
-              refresh_token: refreshToken,
-            });
-          } catch (error) {
-            console.error('Error logging out:', error);
-          }
-        }
-    
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
-        localStorage.removeItem('first_name');
-        setUser(null);
-        setIsAuthenticated(false);
-    
-        // Navigate to the login page with an absolute path
-        navigate('/login/customer');
-      };
-  
-      // Navigate to the login page with an absolute path
-  
+  const handleLogout = async () => {
+    const refreshToken = localStorage.getItem('refresh_token');
+    if (refreshToken) {
+      try {
+        await axiosInstance.post('/api/v1/u/logout/', {
+          refresh_token: refreshToken,
+        });
+      } catch (error) {
+        console.error('Error logging out:', error);
+      }
+    }
+
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('first_name');
+    setUser(defaultUserState);
+    setIsAuthenticated(false);
+
+    window.location.href = '/login/customer';
+  };
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, login, handleLogout }}>
@@ -98,3 +80,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export default AuthProvider;

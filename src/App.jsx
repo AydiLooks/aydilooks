@@ -36,8 +36,8 @@ function App() {
     <Route path="login/customer/" element={<CustomerLogin/>}></Route>
     <Route path='customer/' element={<CustomerSignup/>}></Route>
     <Route path='shopkeeper/' element={<ShoperSignup/>}></Route>
-    <Route path='/customer-profile'element={<CustomerProfile/>}></Route>
-    <Route path='/payment' element={<TotalBilling/>}></Route>
+    <Route path='/profile'element={<CustomerProfile/>}></Route>
+    <Route path='/orders/' element={<TotalBilling/>}></Route>
     <Route path='logout/' element={<Logout/>}></Route>
     {/* <Route path="*" element={<NotFoundPage />} /> */}
     
