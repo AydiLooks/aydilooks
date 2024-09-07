@@ -1,99 +1,102 @@
-import React, { useContext } from 'react'
-import axios from'../../utills/axios'
-import {Navigate} from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import axios from '../../utills/axios';
+import { Navigate } from 'react-router-dom';
 import MyLottieAnimation from '../LottieAnimation';
-import { cuteAlert } from 'cute-alert'
-import { useState } from 'react';
+import { cuteAlert } from 'cute-alert';
 import { AuthContext } from '../../utills/CheckAuth';
 
 export default function CustomerLogin() {
   const [isValid, setIsValid] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [navigate,setNavigate]=useState(false);
-  const {login}=useContext(AuthContext);
-  const Submit = async (e)=>{
+  const [navigate, setNavigate] = useState(false);
+  const { login } = useContext(AuthContext);
+
+  const Submit = async (e) => {
     e.preventDefault();
     const formData = {
       email: document.getElementById('email').value,
-      password:document.getElementById('password').value,
-      isCustomer:true,
-      
+      password: document.getElementById('password').value,
+      isCustomer: true,
     };
     setEmail(formData.email);
     setPassword(formData.password);
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    setIsValid(emailRegex.test(formData.email) && passwordRegex.test(formData.password))
+    setIsValid(emailRegex.test(formData.email) && passwordRegex.test(formData.password));
+
     if (isValid) {
-        cuteAlert({
+      cuteAlert({
         type: 'success',
         title: 'Registration Confirmed',
-        description: 'Thank you for being the member:)',
-        })
-    //   axios.post('http://localhost:8000/api/v1/u/login/customer/',  formData)
-    // .then(response => {
-    //   console.log('Success:', response.data);
-    //   localStorage.setItem('access_token', response.data.access);
-    //   localStorage.setItem('refresh_token', response.data.refresh);
-    //   localStorage.setItem('first_name',response.data.first_name);
-    //   console.log(response.data.access);
-    //   setNavigate(true);
-    await login(formData, setNavigate);
-    // }
-    // .catch(error => {
-    //   console.error('Error:', error);
-    // });
-  }
-  else {
-    cuteAlert({
+        description: 'Thank you for being a member :)',
+      });
+      await login(formData, setNavigate);
+    } else {
+      cuteAlert({
         type: 'error',
         title: 'Invalid Entries',
-        description: 'Please fill in all required fields correctly.'
+        description: 'Please fill in all required fields correctly.',
       });
-    
+    }
+  };
+
+  if (navigate) {
+    return <Navigate to="/" />;
   }
-  }
-  if(navigate){
-    return <Navigate to="/"></Navigate>
-  }
+
   return (
- <div className="flex justify-center grid-cols-2">
-  <div class="w-full max-w-xs h-5/6">
-    <form class="bg-red-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-56" style={{height:"30rem"}}>
-      <div class="mb-4">
-        <label class="block text-gray-900 text-sm font-bold mb-2" htmlFor="email">
-        Email
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" required />
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gradient-to-r from-gray-100 to-gray-300 p-4">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 md:mr-8 mb-8 md:mb-0">
+        <form className="space-y-6" onSubmit={Submit}>
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
+              type="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="password"
+              placeholder="******************"
+              required
+            />
+            <p className="text-red-500 text-xs italic mt-2">
+              Please choose a strong password.<br />
+              Use special symbols (@), a-z, A-Z, 0-9.
+            </p>
+          </div>
+          <div className="flex items-center justify-between">
+            <button
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Sign In
+            </button>
+            <a
+              className="inline-block align-baseline font-bold text-sm text-blue-600 hover:text-blue-800"
+              href="#"
+            >
+              Forgot Password?
+            </a>
+          </div>
+        </form>
       </div>
-      <div class="mb-6">
-        <label class="block text-gray-900 text-sm font-bold mb-2" htmlFor="password">
-          Password
-        </label>
-        <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" required placeholder="******************"/>
-        <p class="text-red-500 text-xs italic">Please choose a strong password.<br></br>
-        use special symbols(@),a-z,A-Z,1-10</p>
+      <div className="w-full max-w-md">
+        <MyLottieAnimation />
       </div>
-      <div class="flex items-center justify-between">
-       <button class="bg-slate-950 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={Submit} >
-          Sign In
-        </button>
-        <a class="inline-block align-baseline font-bold text-sm text-black-500 hover:text-blue-800" href="#">
-          Forgot Password?
-        </a>
-      </div>
-    </form>
-    
-  </div>
-  <div className='bg-red-200 w-full max-w-xs shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-56'> <MyLottieAnimation/></div>
-  </div>
-      
-        
-     
-
-     
-
-  )
+    </div>
+  );
 }
