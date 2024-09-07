@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
+import MyImage from '../assets/b585726701a72aefc125c0c8a062e614-removebg-preview.png'
 
 export default function Middleone() {
   return (
@@ -22,9 +23,10 @@ export default function Middleone() {
         </Link>
       </div>
       <div className='img pt-32 mt-32 md:pt-0'>
-        {/* <img src={myimage} alt="Your Image" className="max-w-full" /> */}
+      <img src={MyImage} className='flex-right'></img>
       </div>
       <div className='absolute inset-0 z-0 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 opacity-50 blur-md'></div>
+     
     </div>
   );
 }

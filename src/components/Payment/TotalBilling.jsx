@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useCartContext } from '../../context/cardcontext';
 import axios from '../../utills/axios'; 
-import { cuteAlert } from 'cute-alert'
+import { cuteAlert } from 'cute-alert';
 
 export default function TotalBilling() {
-  const { total_item, cart, shipping_fee ,clearcart} = useCartContext();
+  const { total_item, cart, shipping_fee, clearcart } = useCartContext();
   const [formData, setFormData] = useState({
     address: '',
     city: '',
@@ -12,6 +12,7 @@ export default function TotalBilling() {
     zip: '',
     payment: '',
   });
+
   const subtotal = cart.reduce((accumulator, item) => {
     // Calculate the total price for the current item
     const itemTotal = item.amount * item.price;
@@ -19,7 +20,6 @@ export default function TotalBilling() {
     // Add the item total to the accumulator
     return accumulator + itemTotal;
   }, 0);
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,15 +31,15 @@ export default function TotalBilling() {
     try {
       const orderData = {
         order_items: cart.map(item => ({
-          product: item.id,
+          product_id: item.id,  // Updated to match your serializer field
           quantity: item.amount,
         })),
-        shipping_fee,
+        // shipping_fee,
         address: formData.address,
         city: formData.city,
         state: formData.state,
         zip: formData.zip,
-        payment_method: formData.payment,
+        payment_method: formData.payment,  // Renamed to match your serializer field
       };
 
       const authToken = localStorage.getItem('access_token'); // access token in local storage
@@ -54,12 +54,13 @@ export default function TotalBilling() {
       cuteAlert({
         type: 'success',
         title: 'Order Confirmed',
-        description: 'Thank you! Enjoy happy shopping:)',
-        })
+        description: 'Thank you! Enjoy happy shopping :)',
+      });
       console.log('Order created successfully:', response.data);
       // Handle successful response
     } catch (error) {
       console.error('Error creating order:', error.response ? error.response.data : error.message);
+      console.log(cart);
       // Handle error
     }
   };
